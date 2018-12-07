@@ -1,27 +1,12 @@
 ---
-- hosts: all
+- hosts: webserver
   become: yes
   tasks:
-  - name: install git,tree and wget on ubuntu
+  - name: install git, tree and wget
     apt:
       name: "{{ item }}"
-      state: present
+      sate: present
     with_items:
       - git
       - tree
       - wget
-    when: ansible_os_family =="Debian"
-  - name: install git,tree and wget on Redhat
-    yum:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      - git
-      - tree
-      - wget
-    when: ansible_os_family =="RedHat"
-
-
-
-
-
