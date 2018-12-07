@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: webserver
   become: yes
   tasks:
   - name: install git, tree and wget
@@ -10,4 +10,4 @@
       - git
       - tree
       - wget
-    when: ansible_os_family== "Debian"
+    when: ansible_os_family =="Debian"
