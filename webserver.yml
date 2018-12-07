@@ -1,0 +1,14 @@
+---
+- hosts: webserver
+  become: yes
+  tasks:
+  - name: inst httpd
+    yum:
+      name: "{{webpackonredhat}}"
+      state: present
+    when: ansible_os_family== "RedHat"
+  - name: start httpd
+    service:
+      name: "{{webpackonredhat}}"
+      state: started
+    when: ansible_os_family== "RedHat"
